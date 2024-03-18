@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"forum/dao/database"
 	"forum/logger"
+	"forum/pkg/snowflake"
 	"forum/route"
 	"forum/setting"
 	"github.com/gin-gonic/gin"
@@ -35,6 +36,11 @@ func main() {
 	//	return
 	//}
 	//defer redis.Close()
+
+	if err := snowflake.Init(1); err != nil {
+		fmt.Printf("init snowflake failed, err:%v\n", err)
+		return
+	}
 
 	// 5. 注册路由
 	r := gin.Default()
