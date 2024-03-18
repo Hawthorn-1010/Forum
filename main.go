@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"forum/dao/database"
-	"forum/dao/redis"
 	"forum/logger"
 	"forum/route"
 	"forum/setting"
@@ -31,11 +30,11 @@ func main() {
 	defer database.Close()
 
 	// 4. 初始化Redis连接（go-redis）
-	if err := redis.Init(setting.Conf.RedisConfig); err != nil {
-		fmt.Printf("load config failed, err:%v\n", err)
-		return
-	}
-	defer redis.Close()
+	//if err := redis.Init(setting.Conf.RedisConfig); err != nil {
+	//	fmt.Printf("load config failed, err:%v\n", err)
+	//	return
+	//}
+	//defer redis.Close()
 
 	// 5. 注册路由
 	r := gin.Default()

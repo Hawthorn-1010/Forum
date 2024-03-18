@@ -1,4 +1,4 @@
-name: "web_app"
+name: "forum"
 mode: "dev"
 port: 8080
 version: "v0.0.1"
@@ -9,17 +9,17 @@ machine_id: 1
 
 log:
   level: "debug"
-  filename: "web_app.log"
+  filename: "forum.log"
   max_size: 200
   max_age: 30
   max_backups: 7
 database:
   dbtype: "mysql"
-  host: "127.0.0.1"
+  host: "192.168.255.3"
   port: 3306
   user: "root"
   password: "root"
-  dbname: "root"
+  dbname: "forum"
   max_open_conns: 200
   max_idle_conns: 50
 redis:

@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"forum/setting"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
 	"net/url"
