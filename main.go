@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"forum/controller"
 	"forum/dao/database"
 	"forum/logger"
 	"forum/pkg/snowflake"
@@ -37,12 +38,19 @@ func main() {
 	//}
 	//defer redis.Close()
 
+	// 5. 初始化snowflake
 	if err := snowflake.Init(1); err != nil {
 		fmt.Printf("init snowflake failed, err:%v\n", err)
 		return
 	}
 
-	// 5. 注册路由
+	// 6. 初始化gin框架内置的校验器使用的翻译器
+	if err := controller.InitTrans("zh"); err != nil {
+		fmt.Printf("init validator trans failed, err:%v\n", err)
+		return
+	}
+
+	// 7. 注册路由
 	r := gin.Default()
 	r = route.CollectRoute(r)
 	err := r.Run(fmt.Sprintf(":%d", setting.Conf.Port))
@@ -51,5 +59,5 @@ func main() {
 		return
 	}
 
-	// 6. 优雅关机
+	// 8. 优雅关机
 }
