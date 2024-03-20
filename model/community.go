@@ -15,3 +15,7 @@ type CommunityDetail struct {
 	//使用time.time类型的时候,数据库用的是时间戳,所以连接mysql要加上parseTime=true
 	CreateTime time.Time `json:"create_time" gorm:"column:create_time"`
 }
+
+func (CommunityDetail) TableName() string {
+	return "communities"
+}

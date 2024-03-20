@@ -7,3 +7,50 @@
 {"level":"INFO","time":"2024-03-18T16:32:44.816+0800","caller":"logger/logger.go:44","msg":"init logger success"}
 {"level":"INFO","time":"2024-03-18T16:35:08.131+0800","caller":"logger/logger.go:44","msg":"init logger success"}
 {"level":"INFO","time":"2024-03-18T16:38:22.769+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T22:09:50.881+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-19T22:12:01.032+0800","caller":"logic/user.go:49","msg":"database.QueryUser() failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:12:01.033+0800","caller":"controller/user.go:41","msg":"logic.Login failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:12:13.532+0800","caller":"logic/user.go:49","msg":"database.QueryUser() failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:12:13.532+0800","caller":"controller/user.go:41","msg":"logic.Login failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:14:02.381+0800","caller":"logic/user.go:49","msg":"database.QueryUser() failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:14:02.381+0800","caller":"controller/user.go:41","msg":"logic.Login failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:15:16.835+0800","caller":"logic/user.go:49","msg":"database.QueryUser() failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:15:16.835+0800","caller":"controller/user.go:41","msg":"logic.Login failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"INFO","time":"2024-03-19T22:16:22.827+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-19T22:16:29.779+0800","caller":"logic/user.go:49","msg":"database.QueryUser() failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"ERROR","time":"2024-03-19T22:16:29.779+0800","caller":"controller/user.go:41","msg":"logic.Login failed","username":"hzh","error":"unsupported destination, should be slice or struct"}
+{"level":"INFO","time":"2024-03-19T22:17:51.443+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T22:22:15.609+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T22:40:18.568+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:10:29.607+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:11:40.166+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:13:11.514+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:13:22.240+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:13:32.160+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:13:50.806+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:14:45.888+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:14:54.464+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:15:03.614+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:16:28.917+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:16:48.522+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:20:23.468+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:21:11.085+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:23:25.662+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-19T23:23:59.210+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-20T00:38:35.542+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-20T00:41:27.027+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-20T00:42:52.440+0800","caller":"database/community.go:31","msg":"query community failed","id":1,"error":"sql: converting argument $1 type: unsupported type model.CommunityDetail, a struct"}
+{"level":"ERROR","time":"2024-03-20T00:42:52.440+0800","caller":"controller/community.go:29","msg":"logic.GetCommunityList() failed","error":"查询数据失败"}
+{"level":"INFO","time":"2024-03-20T00:50:20.303+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-20T00:50:25.231+0800","caller":"database/community.go:31","msg":"query community failed","id":1,"error":"sql: converting argument $1 type: unsupported type model.CommunityDetail, a struct"}
+{"level":"ERROR","time":"2024-03-20T00:50:25.232+0800","caller":"controller/community.go:29","msg":"logic.GetCommunityList() failed","error":"查询数据失败"}
+{"level":"INFO","time":"2024-03-20T00:54:13.613+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-20T00:54:16.861+0800","caller":"database/community.go:31","msg":"query community failed","id":1,"error":"sql: converting argument $1 type: unsupported type model.CommunityDetail, a struct"}
+{"level":"ERROR","time":"2024-03-20T00:54:16.861+0800","caller":"controller/community.go:29","msg":"logic.GetCommunityList() failed","error":"查询数据失败"}
+{"level":"INFO","time":"2024-03-20T00:58:41.095+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-20T00:58:51.187+0800","caller":"database/community.go:31","msg":"query community failed","id":1,"error":"sql: converting argument $1 type: unsupported type model.CommunityDetail, a struct"}
+{"level":"ERROR","time":"2024-03-20T00:58:51.187+0800","caller":"controller/community.go:29","msg":"logic.GetCommunityList() failed","error":"查询数据失败"}
+{"level":"INFO","time":"2024-03-20T01:00:52.902+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-20T01:00:55.800+0800","caller":"database/community.go:31","msg":"query community failed","id":1,"error":"Error 1146: Table 'forum.community_details' doesn't exist"}
+{"level":"ERROR","time":"2024-03-20T01:00:55.801+0800","caller":"controller/community.go:29","msg":"logic.GetCommunityList() failed","error":"查询数据失败"}
+{"level":"INFO","time":"2024-03-20T01:01:26.360+0800","caller":"logger/logger.go:44","msg":"init logger success"}
