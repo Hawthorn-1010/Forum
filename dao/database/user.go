@@ -4,17 +4,21 @@ import (
 	"forum/model"
 )
 
-func CreateUser(user *model.User) error {
-	if err := db.Create(user).Error; err != nil {
-		return err
-	}
-	return nil
+func CreateUser(user *model.User) (err error) {
+	err = db.Create(user).Error
+	return
 }
 
-func QueryUser(user *model.User) (dbUser *model.User, err error) {
+func QueryUserByUsername(username string) (user *model.User, err error) {
 	// add or "error": "unsupported destination, should be slice or struct"
-	dbUser = new(model.User)
-	err = db.Where("username = ?", user.Username).First(dbUser).Error
+	user = new(model.User)
+	err = db.Where("username = ?", username).First(user).Error
+	return
+}
+
+func QueryUserByID(userId string) (user *model.User, err error) {
+	user = new(model.User)
+	err = db.Where("user_id = ?", userId).First(user).Error
 	return
 }
 

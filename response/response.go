@@ -34,3 +34,12 @@ func Fail(c *gin.Context, errCode ResCode) {
 	}
 	c.JSON(http.StatusOK, res)
 }
+
+func FailWithMsg(c *gin.Context, errCode ResCode, msg string) {
+	res := &Response{
+		Code: errCode,
+		Msg:  msg,
+		Data: nil,
+	}
+	c.JSON(http.StatusOK, res)
+}

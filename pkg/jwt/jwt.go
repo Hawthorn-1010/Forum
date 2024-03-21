@@ -7,7 +7,9 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-const TokenExpireDuration = time.Hour * 2
+const AccessTokenExpireDuration = time.Hour * 2
+
+const RefreshTokenExpireDuration = time.Hour * 24 * 2
 
 var mySecret = []byte("许愿找日常顺利！")
 
@@ -21,21 +23,32 @@ type MyClaims struct {
 	jwt.StandardClaims
 }
 
+func keyFunc(_ *jwt.Token) (i interface{}, err error) {
+	return mySecret, nil
+}
+
 // GenToken 生成JWT
-func GenToken(userID uint64, username string) (string, error) {
+func GenToken(userID uint64, username string) (accessToken, refreshToken string, err error) {
 	// 创建一个我们自己的声明的数据
 	c := MyClaims{
 		userID,
-		"username", // 自定义字段
+		username, // 自定义字段
 		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(TokenExpireDuration).Unix(), // 过期时间
-			Issuer:    "hzy",                                      // 签发人
+			ExpiresAt: time.Now().Add(AccessTokenExpireDuration).Unix(), // 过期时间
+			Issuer:    "hzy",                                            // 签发人
 		},
 	}
 	// 使用指定的签名方法创建签名对象
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, c)
+	accessToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, c).SignedString(mySecret)
+
+	// refresh token 不需要存任何自定义数据
+	refreshToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.StandardClaims{
+		ExpiresAt: time.Now().Add(RefreshTokenExpireDuration).Unix(),
+		Issuer:    "hzy",
+	}).SignedString(mySecret)
+
 	// 使用指定的secret签名并获得完整的编码后的字符串token
-	return token.SignedString(mySecret)
+	return
 }
 
 // ParseToken 解析JWT
@@ -53,4 +66,23 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 		return mc, nil
 	}
 	return nil, errors.New("invalid token")
+}
+
+// RefreshToken 刷新AccessToken
+func RefreshToken(accessToken, refreshToken string) (newAToken, newRToken string, err error) {
+	// refresh token无效直接返回
+	if _, err = jwt.Parse(refreshToken, keyFunc); err != nil {
+		return
+	}
+
+	// 从旧access token中解析出claims数据
+	var claims MyClaims
+	_, err = jwt.ParseWithClaims(accessToken, &claims, keyFunc)
+	v, _ := err.(*jwt.ValidationError)
+
+	// 当access token是过期错误 并且 refresh token没有过期时就创建一个新的access token
+	if v.Errors == jwt.ValidationErrorExpired {
+		return GenToken(claims.UserID, claims.Username)
+	}
+	return
 }

@@ -1,8 +1,6 @@
 package middleware
 
 import (
-	"forum/dao/database"
-	"forum/model"
 	"forum/pkg/jwt"
 	"forum/response"
 	"github.com/gin-gonic/gin"
@@ -26,13 +24,13 @@ func JWTAuthMiddleware() gin.HandlerFunc {
 			return
 		}
 		// 验证通过，获取claims中userId
-		username := claims.Username
-		userId := claims.UserID
-		var user = &model.User{
-			Username: username,
-			UserID:   userId,
-		}
-		user, err = database.QueryUser(user)
+		//username := claims.Username
+		//userId := claims.UserID
+		//var user = &model.User{
+		//	Username: username,
+		//	UserID:   userId,
+		//}
+		//user, err = database.QueryUser(user)
 
 		//// 如果用户不存在
 		//if user.ID == 0 {

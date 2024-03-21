@@ -39,21 +39,18 @@ func SignUp(params vo.SignUpParams) error {
 	return database.CreateUser(user)
 }
 
-func Login(params *vo.LoginParams) (token string, err error) {
-	user := &model.User{
-		Username: params.Username,
-	}
-	user, err = database.QueryUser(user)
+func Login(params *vo.LoginParams) (accessToken, refreshToken string, err error) {
+	user, err := database.QueryUserByUsername(params.Username)
 
 	if err != nil {
 		zap.L().Error("database.QueryUser() failed", zap.String("username", fmt.Sprint(params.Username)), zap.Error(err))
-		return "", err
+		return "", "", err
 	}
 	if user == nil {
-		return "", database.ErrorUserNotExit
+		return "", "", database.ErrorUserNotExit
 	}
 	if user.Password != encryptPassword(params.Password) {
-		return "", database.ErrorPasswordWrong
+		return "", "", database.ErrorPasswordWrong
 	}
 
 	return jwt.GenToken(user.UserID, user.Username)
