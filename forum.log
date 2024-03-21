@@ -54,3 +54,12 @@
 {"level":"ERROR","time":"2024-03-20T01:00:55.800+0800","caller":"database/community.go:31","msg":"query community failed","id":1,"error":"Error 1146: Table 'forum.community_details' doesn't exist"}
 {"level":"ERROR","time":"2024-03-20T01:00:55.801+0800","caller":"controller/community.go:29","msg":"logic.GetCommunityList() failed","error":"查询数据失败"}
 {"level":"INFO","time":"2024-03-20T01:01:26.360+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-21T22:08:32.901+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-21T22:12:16.269+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"INFO","time":"2024-03-21T22:14:38.643+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-21T22:15:49.248+0800","caller":"controller/post.go:30","msg":"logic.CreatePost() failed","post_id":223462030068154369,"error":"Error 1292: Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1"}
+{"level":"ERROR","time":"2024-03-21T22:16:06.694+0800","caller":"controller/post.go:30","msg":"logic.CreatePost() failed","post_id":223462059361173505,"error":"Error 1292: Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1"}
+{"level":"ERROR","time":"2024-03-21T22:20:10.257+0800","caller":"controller/post.go:30","msg":"logic.CreatePost() failed","post_id":223462467987046401,"error":"Error 1292: Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1"}
+{"level":"ERROR","time":"2024-03-21T22:20:13.531+0800","caller":"controller/post.go:30","msg":"logic.CreatePost() failed","post_id":223462473473196033,"error":"Error 1292: Incorrect datetime value: '0000-00-00' for column 'create_time' at row 1"}
+{"level":"INFO","time":"2024-03-21T22:20:50.378+0800","caller":"logger/logger.go:44","msg":"init logger success"}
+{"level":"ERROR","time":"2024-03-21T22:21:06.965+0800","caller":"controller/post.go:14","msg":"Create Post with invalid params","error":"parsing time \"2024-03-21 15:15:30\" as \"2006-01-02T15:04:05Z07:00\": cannot parse \" 15:15:30\" as \"T\""}

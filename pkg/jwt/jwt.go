@@ -56,9 +56,7 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 	// 解析token
 	var mc = new(MyClaims)
 	//解析token
-	token, err := jwt.ParseWithClaims(tokenString, mc, func(token *jwt.Token) (i interface{}, err error) {
-		return mySecret, nil
-	})
+	token, err := jwt.ParseWithClaims(tokenString, mc, keyFunc)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +67,7 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 }
 
 // RefreshToken 刷新AccessToken
-func RefreshToken(accessToken, refreshToken string) (newAToken, newRToken string, err error) {
+func RefreshToken(accessToken, refreshToken string) (newAccessToken, newRefreshToken string, err error) {
 	// refresh token无效直接返回
 	if _, err = jwt.Parse(refreshToken, keyFunc); err != nil {
 		return

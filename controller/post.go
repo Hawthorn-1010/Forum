@@ -35,7 +35,14 @@ func CreatePostHandler(c *gin.Context) {
 }
 
 func PostDetailHandler(c *gin.Context) {
-	id := c.Param()
+	id := c.Param("id")
+	postDetail, err := logic.GetPost(id)
+	if err != nil {
+		zap.L().Error("logic.GetPost() failed", zap.String("post_id", id), zap.Error(err))
+		response.Fail(c, response.CodeServerBusy)
+		return
+	}
+	response.Success(c, postDetail)
 }
 
 func PostListHandler(c *gin.Context) {

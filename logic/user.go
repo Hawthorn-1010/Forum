@@ -47,10 +47,12 @@ func Login(params *vo.LoginParams) (accessToken, refreshToken string, err error)
 		return "", "", err
 	}
 	if user == nil {
-		return "", "", database.ErrorUserNotExit
+		err = database.ErrorUserNotExit
+		return
 	}
 	if user.Password != encryptPassword(params.Password) {
-		return "", "", database.ErrorPasswordWrong
+		err = database.ErrorPasswordWrong
+		return
 	}
 
 	return jwt.GenToken(user.UserID, user.Username)
