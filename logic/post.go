@@ -36,3 +36,21 @@ func GetPost(postID string) (data *model.ApiPostDetail, err error) {
 	}
 	return
 }
+
+func GetPostList(page, size int) (postDetails []*model.ApiPostDetail, err error) {
+	posts, err := database.GetPostList(page, size)
+	if err != nil {
+		zap.L().Error("database.GetPostList() failed", zap.Error(err))
+	}
+
+	for _, post := range posts {
+		postDetail, err := GetPost(fmt.Sprint(post.PostID))
+		if err != nil {
+			zap.L().Error("mysql.GetPost failed", zap.Uint64("AuthorID", post.PostID), zap.Error(err))
+			continue
+		}
+		postDetails = append(postDetails, postDetail)
+	}
+
+	return
+}

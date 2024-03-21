@@ -46,7 +46,14 @@ func PostDetailHandler(c *gin.Context) {
 }
 
 func PostListHandler(c *gin.Context) {
-
+	page, size := getPageInfo(c)
+	posts, err := logic.GetPostList(page, size)
+	if err != nil {
+		zap.L().Error("logic.GetPostList() failed", zap.Error(err))
+		response.Fail(c, response.CodeServerBusy)
+		return
+	}
+	response.Success(c, posts)
 }
 
 func PostList2Handler(c *gin.Context) {
