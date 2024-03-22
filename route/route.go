@@ -34,9 +34,6 @@ func CollectRoute(r *gin.Engine) *gin.Engine {
 		v1.GET("/post2", controller.PostList2Handler)
 
 		v1.POST("/vote", controller.VoteHandler)
-
-		v1.POST("/comment", controller.CommentHandler)
-		v1.GET("/comment", controller.CommentListHandler)
 	}
 
 	// 处理请求路由不存在的情况

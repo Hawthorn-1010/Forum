@@ -3,7 +3,7 @@ package model
 import "time"
 
 type Post struct {
-	PostID      uint64    `json:"post_id" gorm:"column:post_id"`
+	PostID      uint64    `json:"post_id,string" gorm:"column:post_id"`
 	Title       string    `json:"title" gorm:"column:title"`
 	Content     string    `json:"content" gorm:"column:content"`
 	AuthorId    uint64    `json:"author_id" gorm:"column:author_id"`

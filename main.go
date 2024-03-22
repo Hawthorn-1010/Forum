@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"forum/controller"
 	"forum/dao/database"
+	"forum/dao/redis"
 	"forum/logger"
 	"forum/pkg/snowflake"
 	"forum/route"
@@ -31,12 +32,12 @@ func main() {
 	}
 	defer database.Close()
 
-	// 4. 初始化Redis连接（go-redis）
-	//if err := redis.Init(setting.Conf.RedisConfig); err != nil {
-	//	fmt.Printf("load config failed, err:%v\n", err)
-	//	return
-	//}
-	//defer redis.Close()
+	//4. 初始化Redis连接（go-redis）
+	if err := redis.Init(setting.Conf.RedisConfig); err != nil {
+		fmt.Printf("load config failed, err:%v\n", err)
+		return
+	}
+	defer redis.Close()
 
 	// 5. 初始化snowflake
 	if err := snowflake.Init(1); err != nil {

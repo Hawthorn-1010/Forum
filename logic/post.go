@@ -3,6 +3,7 @@ package logic
 import (
 	"fmt"
 	"forum/dao/database"
+	"forum/dao/redis"
 	"forum/model"
 	"forum/pkg/snowflake"
 	"go.uber.org/zap"
@@ -10,7 +11,13 @@ import (
 
 func CreatePost(post *model.Post) (err error) {
 	post.PostID, _ = snowflake.GetID()
-	return database.CreatePost(post)
+
+	err = database.CreatePost(post)
+	if err != nil {
+		return err
+	}
+	err = redis.CreatePost(post.PostID)
+	return
 }
 
 func GetPost(postID string) (data *model.ApiPostDetail, err error) {
