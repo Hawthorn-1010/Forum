@@ -4,6 +4,7 @@ import (
 	"forum/logic"
 	"forum/model"
 	"forum/response"
+	"forum/vo"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -56,6 +57,29 @@ func PostListHandler(c *gin.Context) {
 	response.Success(c, posts)
 }
 
-func PostList2Handler(c *gin.Context) {
+// GetPostListHandler2 根据前端传来的参数动态获取帖子列表接口
+// 按创建时间或者点赞分数
+func GetPostListHandler2(c *gin.Context) {
+	//获取flag（获取时间排序的帖子还是点赞分数）
+	//初始化结构体指定初始参数
+	p := vo.ParamPostList{
+		Page:  1,
+		Size:  10,
+		Order: vo.OrderTime,
+	}
+	if err := c.ShouldBind(&p); err != nil {
+		zap.L().Error("GetPostListHandler2 with invalid params", zap.Error(err))
+		response.Fail(c, response.CodeInvalidParams)
+		return
+	}
+	//获取帖子的数据
+	data, err := logic.GetPostList2(&p)
+	if err != nil {
+		zap.L().Error("logic.GetPostList2", zap.Error(err))
+		response.Fail(c, response.CodeServerBusy)
+		return
+	}
+	//返回信息
+	response.Success(c, data)
 
 }
